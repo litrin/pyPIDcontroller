@@ -22,7 +22,7 @@ class TestSerialValue(unittest.TestCase):
         v.value(2)
 
         self.assertEqual(v.current, 2)
-        self.assertEqual(v.last, 1)
+        self.assertEqual(v.previous, 1)
         self.assertEqual(v.delta, 2 - 1)
         self.assertEqual(len(v), 2)
 
