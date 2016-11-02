@@ -1,7 +1,6 @@
 import unittest
-from PIDcontroller import PIDController
-from PIDcontroller import SerialValue
-from PIDcontroller import ListValue
+
+from PID.datasets import SerialValue, ListValue
 
 
 class MyTestCase(unittest.TestCase):
@@ -10,7 +9,6 @@ class MyTestCase(unittest.TestCase):
 
 
 class TestSerialValue(unittest.TestCase):
-
     def test_sv(self):
         sv = SerialValue()
         self.main_testcase(sv)
@@ -25,8 +23,9 @@ class TestSerialValue(unittest.TestCase):
 
         self.assertEqual(v.current, 2)
         self.assertEqual(v.last, 1)
-        self.assertEqual(v.delta, 2-1)
+        self.assertEqual(v.delta, 2 - 1)
         self.assertEqual(len(v), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
