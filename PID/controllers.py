@@ -91,6 +91,8 @@ class BaseController:
     integral = 0.0
     length = 0
 
+    output = 0.0
+
     def set_PID(self, P=0.2, I=0.0, D=0.0):
         """
         Set P I D params for the controller
@@ -187,13 +189,18 @@ class BaseController:
             derivative = self.error_value.delta / self.time.delta
             self.output += self.D * derivative
 
-    def get_output(self):
+    def get_output(self, fixed=True):
         """
-        Get the output from controller
+        Get the output from controller, if set fix = True,
+            the value will work better at the beginning in some cases.
 
+        :param fixed: Bool
         :return: number
         """
-        return self.output
+        if fixed:
+            return self.output - 1 / len(self.time)
+        else:
+            return self.output
 
 
 class Controller(BaseController):
